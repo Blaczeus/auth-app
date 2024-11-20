@@ -1,46 +1,30 @@
-import Animated, {
-  useSharedValue,
-  withTiming,
-  useAnimatedStyle,
-  Easing,
-} from "react-native-reanimated";
-import { View, Button } from "react-native";
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import './assets/styles/global.css';
 
-export default function AnimatedStyleUpdateExample(props) {
-  const randomWidth = useSharedValue(10);
 
-  const config = {
-    duration: 500,
-    easing: Easing.bezier(0.5, 0.01, 0, 1),
-  };
+const Stack = createNativeStackNavigator();
 
-  const style = useAnimatedStyle(() => {
-    return {
-      width: withTiming(randomWidth.value, config),
-    };
-  });
-
+function RootStack ()
+{
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <Animated.View
-        style={[
-          { width: 100, height: 80, backgroundColor: "black", margin: 30 },
-          style,
-        ]}
-      />
-      <Button
-        title="toggle"
-        onPress={() => {
-          randomWidth.value = Math.random() * 350;
-        }}
-      />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={} />
+    </Stack.Navigator>
+  );
+}
+
+
+export default function App ()
+{
+  return (
+    <NavigationContainer>
+      <RootStack />
+      {/* <View className="flex-1 justify-center items-center bg-gray-200">
+        <Text className="text-4xl font-bold text-blue-500">Hello World!</Text>
+      </View> */}
+    </NavigationContainer>
   );
 }

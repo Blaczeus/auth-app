@@ -1,4 +1,10 @@
 {
-  "name": "login-ui",
-  "slug": "login-ui"
+	"expo": {
+		"web": {
+			"bundler": "metro"
+		},
+		"userInterfaceStyle": "automatic",
+		"name": "login-ui",
+		"slug": "login-ui"
+	}
 }
