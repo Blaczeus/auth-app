@@ -1,20 +1,45 @@
-# Reanimated example
+# Auth App
 
-<p>
-  <!-- iOS -->
-  <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  <!-- Android -->
-  <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-  <!-- Web -->
-</p>
+This is an authentication UI project built using React Native with the following features:
 
-## 🚀 How to use
+- Login and Signup forms.
+- Keyboard-aware layout for a seamless user experience on mobile devices.
+- Beautiful animations using `react-native-reanimated`.
 
-> `npx create-expo my-app --example with-reanimated`
+## Installation
 
-- Run `yarn` or `npm install`
-- Run `yarn start` or `npm run start` to try it out.
+To set up the project locally, follow these steps:
 
-## 📝 Notes
+1. Clone this repository:
 
-- [`react-native-reanimated` docs](https://docs.swmansion.com/react-native-reanimated/)
+   ```bash
+   git clone https://github.com/Blaczeus/auth-app.git
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd auth-app
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+
+4. Start the development server:
+
+   ```bash
+   npm start
+
+## Features
+
+- Login and Signup forms with validation and error handling.
+- Keyboard-aware layout for a seamless user experience on mobile devices.
+- Smooth Animations using `react-native-reanimated`.
+
+## Tools & Libraries Used
+
+- React Native: Framework for building mobile applications using JavaScript and React.
+- Expo: A framework and platform for universal React applications.
+- React Native Reanimated: Used for creating smooth animations.
+- React Navigation: Enables easy navigation between screens.
+- Keyboard Aware Scroll View: Handles keyboard interaction and ensures input fields remain visible.
