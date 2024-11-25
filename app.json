@@ -1,10 +1,24 @@
 {
-	"expo": {
-		"web": {
-			"bundler": "metro"
-		},
-		"userInterfaceStyle": "automatic",
-		"name": "login-ui",
-		"slug": "login-ui"
-	}
+  "expo": {
+    "web": {
+      "bundler": "metro"
+    },
+    "ios": {
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "userInterfaceStyle": "automatic",
+    "name": "login-ui",
+    "slug": "login-ui",
+    "plugins": [
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true,
+          "faceIDPermission": "Allow Auth-App to access your Face ID biometric data."
+        }
+      ]
+    ]
+  }
 }
