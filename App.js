@@ -20,8 +20,8 @@ export default function App ()
 
   useEffect( () => {
     const checkAuth = async () => {
-      const token = await SecureStore.getItemAsync('authToken');
-      setIsAuthenticated(!!token);
+      const loggedInUser = await SecureStore.getItemAsync('loggedInUser');
+      setIsAuthenticated(!!loggedInUser);
     };
     checkAuth();
   }, []);
@@ -41,15 +41,23 @@ export default function App ()
         screenOptions={{
           headerShown: false,
           animation: 'simple_push',
-          animationDuration: 1000,
+          animationDuration: 3000,
         }}
       >
         {isAuthenticated ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <>
+            <Stack.Screen name="Home">
+              {() => <HomeScreen setIsAuthenticated={setIsAuthenticated} />}
+            </Stack.Screen>
+          </>
         ) : (
           <>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen name="Login">
+              {() => <LoginScreen setIsAuthenticated={setIsAuthenticated} />}
+            </Stack.Screen>
+            <Stack.Screen name="Signup">
+              {() => <SignupScreen setIsAuthenticated={setIsAuthenticated} />}
+            </Stack.Screen>
           </>
         )}
       </Stack.Navigator>
