@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator} from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator, Alert} from 'react-native'
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar'
 import Animated, { FadeIn, FadeInDown, FadeInUp, FadeOut } from 'react-native-reanimated';
@@ -48,6 +48,7 @@ export default function LoginScreen ({setIsAuthenticated})
             
             if (user) {
                 await SecureStore.setItemAsync('loggedInUser', JSON.stringify(user));
+                Alert.alert('Success', 'Login successful!');
                 setIsAuthenticated(true);
             } else {
                 setError(true);

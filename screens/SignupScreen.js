@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator, Switch } from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator, Switch, Alert } from 'react-native'
 import React, {useState} from 'react'
 import { StatusBar } from 'expo-status-bar'
 import Animated, { FadeIn, FadeInDown, FadeInUp, FadeOut } from 'react-native-reanimated';
@@ -54,7 +54,7 @@ export default function SignupScreen ({setIsAuthenticated})
                 return;
             }
     
-            const userExists = mockUsers.find(user => user.email === trimmedEmail && user.username === trimmedUsername);
+            const userExists = mockUsers.find(user => user.email === trimmedEmail || user.username === trimmedUsername);
             
             if (userExists) {
                 setError(true);
@@ -63,6 +63,7 @@ export default function SignupScreen ({setIsAuthenticated})
                 await SecureStore.setItemAsync('loggedInUser', JSON.stringify({email: trimmedEmail, username: trimmedUsername, password: trimmedPassword}));
                 mockUsers.push({email: trimmedEmail, username: trimmedUsername, password: trimmedPassword});
                 console.log(mockUsers);
+                Alert.alert('Success', 'Account created successfully!');
                 setIsAuthenticated(true);
             }
         }catch (err) {
