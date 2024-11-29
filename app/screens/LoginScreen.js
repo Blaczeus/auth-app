@@ -1,10 +1,10 @@
-import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator, Alert} from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar'
+import { StatusBar } from 'expo-status-bar';
 import Animated, { FadeIn, FadeInDown, FadeInUp, FadeOut } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
-import mockUsers from '../mockUsers';
+import mockUsers from '../../mockUsers';
 
 
 export default function LoginScreen ({setIsAuthenticated})
@@ -52,7 +52,7 @@ export default function LoginScreen ({setIsAuthenticated})
                 setIsAuthenticated(true);
             } else {
                 setError(true);
-                setErrorText("Invalid email or password.");
+                setErrorText("Invalid Credentials.");
             }
         } catch (err) {
             setError(true);
@@ -67,12 +67,12 @@ export default function LoginScreen ({setIsAuthenticated})
         <View className="">
             <View className="w-full h-full bg-white">
                 <StatusBar style="dark" />
-                <Image source={require( '../assets/images/background.png' )} className="absolute w-full h-full" />
+                <Image source={require( '../../assets/images/background.png' )} className="absolute w-full h-full" />
 
                 {/*Lights*/}
                 <View className="absolute flex-row justify-around w-full">
-                    <Animated.Image entering={FadeInUp.delay( 200 ).duration( 1000 ).springify().damping( 3 )} source={require( '../assets/images/light.png' )} className="h-[225] w-[90]" />
-                    <Animated.Image entering={FadeInUp.delay( 400 ).duration( 1000 ).springify().damping( 2 )} source={require( '../assets/images/light.png' )} className="h-[160] w-[65]" />
+                    <Animated.Image entering={FadeInUp.delay( 200 ).duration( 1000 ).springify().damping( 3 )} source={require( '../../assets/images/light.png' )} className="h-[225] w-[90]" />
+                    <Animated.Image entering={FadeInUp.delay( 400 ).duration( 1000 ).springify().damping( 2 )} source={require( '../../assets/images/light.png' )} className="h-[160] w-[65]" />
                 </View>
 
                 {/*Title and Form*/}
