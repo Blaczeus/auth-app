@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, ScrollView, ImageBackground } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import { useNavigation } from '@react-navigation/native';
+import { Feather } from '@expo/vector-icons';
 
-export default function HomeScreen({ setIsAuthenticated }) {
+
+export default function HomeScreen({ setIsAuthenticated }) 
+{
+  const navigation = useNavigation();
+
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,49 +47,53 @@ export default function HomeScreen({ setIsAuthenticated }) {
 
   return (
     <View className="flex-1 p-5 mt-10">
-      <View className="flex-1 p-6 mt-14">
-            <Text className="text-black text-3xl font-bold mb-20">Add Task</Text>
-            <TouchableOpacity
-                className="bg-black p-4 rounded-lg mb-6 mt-6"
-                // onPress={handleAddTask}
-            >
-
-            </TouchableOpacity>
-        </View>
       {userInfo ? (
         <>
           <View className="mb-5 mt-10 items-center">
-            <Text className="text-3xl font-bold">Welcome Back, {userInfo.username}!</Text>
-            <Text className="text-lg">Here's a quick overview of your activities.</Text>
+            <Text className="text-4xl font-bold">Hello, {userInfo.username}!</Text>
+            <Text className="text-2xl mt-6">Here's a quick overview of your activities.</Text>
           </View>
+          <TouchableOpacity
+                className="bg-white p-4 rounded-lg mb-6 mt-6 h-60 shadow-md"
+                // onPress={handleAddTask}
+          >
+             <View>
+              <Text className="text-4xl font-bold mb-6 text-black">Recent Activities</Text>
+              <Text className="text-xl font-semibold text-black">- Completed 5 tasks this week</Text>
+              <Text className="text-base mt-2 italic text-black">Keep up the great work!</Text>
+            </View>
+          </TouchableOpacity>
 
           <View className="mb-5 mt-5">
             <Text className="text-3xl font-semibold mt-8 mb-3">Quick Actions</Text>
-            {/* Quick Action Cards in Two Columns */}
             <View className="flex-row flex-wrap justify-between">
-              <TouchableOpacity className="bg-gradient-to-r from-blue-400 to-blue-600 flex-1 min-w-[48%] items-center py-3 mx-1 rounded-lg shadow-lg">
-                <Text className="font-semibold text-white">Add Task</Text>
+              <TouchableOpacity
+                className="bg-cyan-500 flex-1 min-w-[48%] p-5 mx-1 my-2 rounded-lg items-center drop-shadow-2xl"
+                onPress={() => navigation.navigate( 'Add Task' )}
+              >
+                <Text className="text-white font-semibold text-lg">Add Task</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="bg-gradient-to-r from-green-400 to-green-600 flex-1 min-w-[48%] items-center py-3 mx-1 rounded-lg shadow-lg">
-                <Text className="font-semibold text-white">View Settings</Text>
+              <TouchableOpacity
+                className="bg-teal-500 flex-1 min-w-[48%] p-5 mx-1 my-2 rounded-lg items-center drop-shadow-2xl"
+                onPress={() => navigation.navigate( 'Settings' )}
+              >
+                <Text className="text-white font-semibold text-lg">View Settings</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="bg-gradient-to-r from-yellow-400 to-yellow-600 flex-1 min-w-[48%] items-center py-3 mx-1 rounded-lg shadow-lg">
-                <Text className="font-semibold text-white">About Us</Text>
+              <TouchableOpacity
+                className="bg-indigo-400 flex-1 min-w-[48%] p-5 mx-1 my-2 rounded-lg items-center drop-shadow-2xl"
+                onPress={() => navigation.navigate( 'About' )}
+              >
+                <Text className="text-white font-semibold text-lg">About Us</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="bg-gradient-to-r from-red-400 to-red-600 flex-1 min-w-[48%] items-center py-3 mx-1 rounded-lg shadow-lg">
-                <Text className="font-semibold text-white">Notifications</Text>
+              <TouchableOpacity
+                className="bg-orange-400 flex-1 min-w-[48%] p-5 mx-1 my-2 rounded-lg items-center drop-shadow-2xl"
+                onPress={() => navigation.navigate( 'Notifications' )}
+              >
+                <Text className="text-white font-semibold text-lg">Notifications</Text>
               </TouchableOpacity>
-            </View>
-          </View>
-
-          <View className="mb-5">
-            <Text className="text-lg font-semibold mb-3">Recent Activities</Text>
-            <View className="p-4 rounded-lg shadow-md">
-              <Text className="text-base font-medium">You completed 5 tasks this week!</Text>
-              <Text className="text-sm text-gray-500 mt-2">Keep up the great work!</Text>
             </View>
           </View>
         </>

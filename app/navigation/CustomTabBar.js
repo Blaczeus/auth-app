@@ -27,7 +27,7 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
 
   return (
     <View
-      className="flex-row absolute bottom-10 mx-5 bg-white w-[90%] h-16 rounded-lg shadow-md shadow-gray-400 justify-between items-center px-5"
+      className="flex-row absolute bottom-10 mx-5 bg-white w-[90%] h-16 rounded-lg shadow-md shadow-gray-400 justify-between items-center px-5 left-1"
     >
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
@@ -57,19 +57,19 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
               {route.name === "Add Task" ? (
                 <View
                   className={`${
-                    isFocused ? 'bg-black' : 'bg-gray-400'
+                    isFocused ? 'bg-cyan-500' : 'bg-black'
                   } w-14 h-14 rounded-full flex items-center justify-center mb-10`}
                 >
                   <Image
                     source={require("../../assets/images/plus.png")}
                     className="w-6 h-6"
-                    style={{ tintColor: isFocused ? 'white' : 'black' }}
+                    style={{ tintColor: 'white'}}
                   />
                 </View>
               ) : (
                 <FontAwesome5
                   name={options.tabBarIcon}
-                  size={20}
+                  size={22}
                   color={isFocused ? "black" : "gray"}
                 />
               )}

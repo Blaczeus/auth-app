@@ -37,7 +37,7 @@ const AddTaskScreen = () => {
 
     return (
         <View className="flex-1 p-6 mt-14">
-            <Text className="text-black text-3xl font-bold mb-20">Add Task</Text>
+            <Text className="text-black text-4xl text-center font-bold mt-9 mb-20">Add Task</Text>
             <TextInput
                 style={{ height: 50 }}
                 className="bg-gray-300 text-black p-4 rounded-lg text-lg mb-6"
@@ -46,7 +46,7 @@ const AddTaskScreen = () => {
                 onChangeText={(text) => setTask(text)}
             />
             <TouchableOpacity
-                className="bg-black p-4 rounded-lg mb-6 mt-6"
+                className="bg-cyan-500 p-4 rounded-lg mb-6 mt-6"
                 onPress={handleAddTask}
             >
                 <Text className="text-white text-center text-lg font-bold ">

@@ -5,7 +5,7 @@ import SignupScreen from '../screens/SignupScreen';
 
 const Stack = createNativeStackNavigator();
 
-const AuthStack = () => {
+const AuthStack = ({setIsAuthenticated}) => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login">

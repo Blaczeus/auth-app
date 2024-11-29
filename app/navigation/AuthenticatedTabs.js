@@ -5,6 +5,7 @@ import AboutScreen from "../screens/AboutScreen";
 import AddTaskScreen from "../screens/AddTaskScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import CustomTabBar from "./CustomTabBar";
+import NotificationsScreen from "../screens/NotificationScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,14 +29,15 @@ export default function AuthenticatedTabs({ setIsAuthenticated, userInfo }) {
       />
       <Tab.Screen
         name="Notifications"
-        component={HomeScreen}
+        component={NotificationsScreen}
         options={{ tabBarIcon: "bell" }}
       />
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
         options={{ tabBarIcon: "cog" }}
-      />
+      >
+        {() => <SettingsScreen setIsAuthenticated={setIsAuthenticated} userInfo={userInfo} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
